@@ -1,9 +1,9 @@
 # Deep Learning a gyakorlatban Python és LUA alapon 
-## Csapat
-Név: **LuaLuaLua**
+## Team
+Name: **LuaLuaLua**
 
-Tagok: 
-| Név                         | Neptun | 
+Members: 
+| Name                        | Neptun | 
 |-----------------------------|--------|
 | Kiss-Meirosu László József  | K5O7BU |
 | Gáspár András               | I6BST3 | 
