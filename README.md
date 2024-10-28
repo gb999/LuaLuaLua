@@ -24,6 +24,13 @@ To run the code, simply open the notebook in Google Colab by clicking the button
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gb999/LuaLuaLua/blob/main/LuaLuaLua.ipynb)
 
+## Milestones
+Below are the submissions for the assignments.
+
+| Milestone | Colab Link | Branch |
+|-----------|------------|--------|
+| 1 | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gb999/LuaLuaLua/blob/milestone1/LuaLuaLua.ipynb) | *milestone1* |
+
 
 
 ## Source
