@@ -19,7 +19,7 @@ In this competition, we're challenged to create a model that distinguishes betwe
 - **Training Data**: 10,000 labeled tweets that indicate whether the tweet is about a real disaster (`1`) or not (`0`).
 - **Test Data**: Tweets for which we need to predict the labels.
 
-## Running the Code
+## Running the Code 
 To run the code, simply open the notebook in Google Colab by clicking the button below, or in [LuaLuaLua.ipynb](LuaLuaLua.ipynb):
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gb999/LuaLuaLua/blob/main/LuaLuaLua.ipynb)
@@ -30,6 +30,8 @@ Below are the submissions for the assignments.
 | Milestone | Colab Link | Branch |
 |-----------|------------|--------|
 | 1 | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gb999/LuaLuaLua/blob/milestone1/LuaLuaLua.ipynb) | *milestone1* |
+| 2 |  [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gb999/LuaLuaLua/blob/milestone2/LuaLuaLua.ipynb) | *milestone2* |
+
 
 
 
