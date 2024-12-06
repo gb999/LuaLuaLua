@@ -1,5 +1,6 @@
 # Deep Learning a gyakorlatban Python és LUA alapon 
 ## Team
+(Cél: Megajánlott jegy)
 Name: **LuaLuaLua**
 
 Members: 
