@@ -17,7 +17,11 @@ We decided to base our use a pretrained model called GloVe.
 **Model:**
 **Evalutaion:**
 
-### 3. Stacked Model: GRU-LSTM
+### 3. Two phase learning
+**Model:**
+**Evalutaion:**
+
+### 4. Stacked Model: GRU-LSTM
 **Model:**
 **Evalutaion:**
 
