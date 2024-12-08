@@ -69,6 +69,13 @@ To further mitigate overfitting, the model incorporates techniques such as Early
 
 **Evalutaion:**
 
+![Improved LSTM precision](improved_lstm_precision.png)
+
+
+![Improved LSTM accuracy](improved_lstm_accuracy.png)
+
+![Improved LSTM confusion matrix](improved_lstm_confMx.png)
+
 ### 3. Two phase learning
 **Model:**
 **Evalutaion:**
