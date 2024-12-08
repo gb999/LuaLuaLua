@@ -55,6 +55,7 @@ Basic architecture
 
 ### 1. LSTM 
 **Model:** The first model (whitch we created to the II. Milestone) used LSTM (Long Short-Term Memory) architecture, but it was just kind of a dummy.
+
 **Evalutaion:**
 The result were quite poor, but the task for the II. Milestone was to prepare everything in our notebook except the model, so it did the job. The confusion matrix looked like this:
 
@@ -62,7 +63,10 @@ The result were quite poor, but the task for the II. Milestone was to prepare ev
 
 
 ### 2. Improved LSTM
-**Model:**
+**Model:** The second model has been the most successful so far. This model uses an embedding layer with GloVe preloaded. Bidirectional LSTM cells are employed to capture context in the tweets, and a 50% dropout layer is applied to reduce overfitting. The output is a number between 0 and 1, where values above 0.5 are interpreted as "disaster" and those below as "non-disaster."
+
+To further mitigate overfitting, the model incorporates techniques such as EarlyStopping, ModelCheckpoint, and ReduceLROnPlateau. Hyperparameter optimization is also implemented: the parameters learned from the first model fitting are used to improve the performance of the second model.
+
 **Evalutaion:**
 
 ### 3. Two phase learning
