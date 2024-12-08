@@ -68,19 +68,20 @@ The result were quite poor, but the task for the II. Milestone was to prepare ev
 To further mitigate overfitting, the model incorporates techniques such as EarlyStopping, ModelCheckpoint, and ReduceLROnPlateau. Hyperparameter optimization is also implemented: the parameters learned from the first model fitting are used to improve the performance of the second model.
 
 **Evalutaion:**
-
+The validation precision gets relativly high just after 2 epochs:
 ![Improved LSTM precision](improved_lstm_precision.png)
 
 
+Also the accuracy gets quite acceptable value:
+
 ![Improved LSTM accuracy](improved_lstm_accuracy.png)
+
+The confusion matrix:
 
 ![Improved LSTM confusion matrix](improved_lstm_confMx.png)
 
-### 3. Two phase learning
-**Model:**
-**Evalutaion:**
 
-### 4. Stacked Model: GRU-LSTM
+### 3. Stacked Model: GRU-LSTM
 **Model:** The final model uses an embedding layer with GloVe loaded. Then it uses two parallel layers, a Bidirectional LSTM for capturing context in the tweets and a GRU to capture different patterns and improve generalization. Then it uses a Dense layer for classification, a 50% droput layer to reduce overfitting, and finally an output Dense layer for binary classification. To eliminate overfitting we use: early stopping, checkpointing, and learning rate reduction.
 
 ![Model diagram](modell_picture.png)
@@ -101,3 +102,7 @@ To process the tweets, we used the GloVe word-vectorization tool and a complex c
 Despite our efforts to optimize hyperparameters and employ the advanced model described above, the accuracy of the model reached only 0.8132. While this might not seem high at first glance, considering the challenges outlined, I believe it is a respectable achievement.
 
 ## About AI usage
+We used LLMs primarily in three areas:
+Inspiration: We asked ChatGPT for high-level approaches and potential solution paths to specific problems. Of cours, after that we made our own research about the suggested solutions.
+Formatting: We used LLM-s for code formatting and documentation phrasing, to make code, comments and documentation more undersandable.
+Research: We also used LLM-s for understanding a given principle (e.g., LSTM), or to specify a method to our given problem.
