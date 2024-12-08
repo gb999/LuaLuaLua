@@ -89,11 +89,7 @@ To further mitigate overfitting, the model incorporates techniques such as Early
 
 ![Final confusion matrix](final.png)
 
-Model precision:
-
 ![Model precision](model_precision.png)
-
-Training and valdiation accuracy:
 
 ![Model training and validation accuracy](training_validation_accuracy.png)
 
