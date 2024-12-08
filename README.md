@@ -32,6 +32,7 @@ Below are the submissions for the assignments.
 |-----------|------------|--------|
 | 1 | [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gb999/LuaLuaLua/blob/milestone1/LuaLuaLua.ipynb) | *milestone1* |
 | 2 |  [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gb999/LuaLuaLua/blob/milestone2/LuaLuaLua.ipynb) | *milestone2* |
+| 2 |  [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gb999/LuaLuaLua/blob/milestone3/LuaLuaLua.ipynb) | *milestone3* |
 
 
 
