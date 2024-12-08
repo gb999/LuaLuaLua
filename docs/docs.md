@@ -82,9 +82,20 @@ To further mitigate overfitting, the model incorporates techniques such as Early
 
 ### 4. Stacked Model: GRU-LSTM
 **Model:** The final model uses an embedding layer with GloVe loaded. Then it uses two parallel layers, a Bidirectional LSTM for capturing context in the tweets and a GRU to capture different patterns and improve generalization. Then it uses a Dense layer for classification, a 50% droput layer to reduce overfitting, and finally an output Dense layer for binary classification. To eliminate overfitting we use: early stopping, checkpointing, and learning rate reduction.
+
+![Model diagram](modell_picture.png)
+
 **Evalutaion:**
 
 ![Final confusion matrix](final.png)
+
+Model precision:
+
+![Model precision](model_precision.png)
+
+Training and valdiation accuracy:
+
+![Model training and validation accuracy](training_validation_accuracy.png)
 
 ## Conclusion
 Predicting the real meaning of disastrous tweets is not an easy task. Beyond the literal meaning of words, the model must detect humor, sarcasm, personification, figurative speech, and other verbal tools commonly used by humans. The short format of tweets makes this task even more challenging.
