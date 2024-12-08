@@ -22,13 +22,14 @@ To use GloVe we needed to encode our text input into word-vectors, but first the
 
    The abundance of `[link]` is likely due to the large number of tweets that included images or other shared content. Since links don't convey much meaning, we decided to remove them entirely from the dataset.  
    Actually, after completing the model, we were courious about the fact that how the cleaning affects the output of the model, since despite the fact, that these words do not carry information, the connection between the words might be useful. So we just simply removed the cleaning commands form the code. Here is the comparsion of the confusion matrix between the models with and without the text cleaning:
+   
    ![Without the cleaning](withoutCleaning.png)
    
    As it can be seen, cleaning does not affect the out very much, but its got a slightly better performance, so we just kept the orginal form.
-2. **Addressing Retweets and Usernames**:  
+3. **Addressing Retweets and Usernames**:  
    After removing links, we noticed a significant number of meaningless words remaining in our dataset. Among the most common was `RT`, which we soon realized indicates retweets. Additionally, many other frequent "words" appeared to be fragments of usernames from retweet headers (e.g., `@user1234`). These usernames commonly don't carry much important information, so we removed them together with the retweet headers.
 
-3. **Tokenizing the tweets**:
+4. **Tokenizing the tweets**:
    After cleaning we tokenized each tweet into a list of words. We plotted the distribution of tweet lengths.
    
    ![image](https://github.com/user-attachments/assets/47921616-bd9e-44d6-93d7-578cc8bb5c63)
@@ -49,6 +50,7 @@ Basic architecture
 **Model:** The first model (whitch we created to the II. Milestone) used LSTM (Long Short-Term Memory) architecture, but it was just kind of a dummy.
 **Evalutaion:**
 The result were quite poor, but the task for the II. Milestone was to prepare everything in our notebook except the model, so it did the job. The confusion matrix looked like this:
+
 ![First model](firstMod.png)
 
 
@@ -61,7 +63,7 @@ The result were quite poor, but the task for the II. Milestone was to prepare ev
 **Evalutaion:**
 
 ### 4. Stacked Model: GRU-LSTM
-**Model:**
+**Model:** The final model uses an embedding layer with GloVe loaded. Then it uses two parallel layers, a Bidirectional LSTM for capturing context in the tweets and a GRU to capture different patterns and improve generalization. Then it uses a Dense layer for classification, a 50% droput layer to reduce overfitting, and finally an output Dense layer for binary classification.
 **Evalutaion:**
 ![Final confusion matrix](final.png)
 
