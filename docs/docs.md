@@ -68,11 +68,8 @@ The result were quite poor, but the task for the II. Milestone was to prepare ev
 To further mitigate overfitting, the model incorporates techniques such as EarlyStopping, ModelCheckpoint, and ReduceLROnPlateau. Hyperparameter optimization is also implemented: the parameters learned from the first model fitting are used to improve the performance of the second model.
 
 **Evalutaion:**
-The validation precision gets relativly high just after 2 epochs:
-![Improved LSTM precision](improved_lstm_precision.png)
 
-
-Also the accuracy gets quite acceptable value:
+The accuracy gets quite acceptable value:
 
 ![Improved LSTM accuracy](improved_lstm_accuracy.png)
 
@@ -90,8 +87,6 @@ The confusion matrix:
 
 ![Final confusion matrix](final.png)
 
-![Model precision](model_precision.png)
-
 ![Model training and validation accuracy](training_validation_accuracy.png)
 
 ## Conclusion
@@ -99,7 +94,7 @@ Predicting the real meaning of disastrous tweets is not an easy task. Beyond the
 
 To process the tweets, we used the GloVe word-vectorization tool and a complex convolutional network that integrates LSTM and GRU layers in parallel.
 
-Despite our efforts to optimize hyperparameters and employ the advanced model described above, the accuracy of the model reached only 0.8132. While this might not seem high at first glance, considering the challenges outlined, I believe it is a respectable achievement.
+Despite our efforts to optimize hyperparameters and employ the advanced model described above, the accuracy of the model reached only 0.8132 (while the second version reached 0.8344). While this might not seem high at first glance, considering the challenges outlined, I believe it is a respectable achievement.
 
 ## About AI usage
 We used LLMs primarily in three areas:
