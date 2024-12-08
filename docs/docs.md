@@ -1,7 +1,12 @@
 # LuaLuaLua report
  
 ## Task Description
+Twitter has become an important communication channel in times of emergency.
+The ubiquitousness of smartphones enables people to announce an emergency they’re observing in real-time. Because of this, more agencies are interested in programatically monitoring Twitter (i.e. disaster relief organizations and news agencies).
 
+But, it’s not always clear whether a person’s words are actually announcing a disaster.
+
+In this competition, we were challenged to build a machine learning model that predicts which Tweets are about real disasters and which one’s aren’t. We have been given access to a dataset of 10,000 tweets that were hand classified.
 
 ## Implementation
 We decided to base our solution on a pretrained model called GloVe. GloVe, which stands for Global Vectors for Word Representation, is a popular word embedding technique that captures semantic relationships between words in a vector space. This model is a straightforward word-vectorization model, which uses a 50-dimensional vector for each word. In this model (as in other word-vector models), each word is represented by an n-dimensional vector. The "distance" between vectors represents the similarity between words. Distance is calculated using the Pythagorean theorem, as the square root of the sum of squared differences. For instance, the distance between words like "mug" and "cup" is small, as they are similar and can often be used interchangeably in a sentence. However, words like "tractor" and "skyscraper" are positioned far apart in the vector space due to their distinct meanings.
