@@ -46,7 +46,7 @@ To use GloVe we needed to encode our text input into word-vectors, but first the
    We needed all inputs for our model to be the same in length. 99% of the words tweets is 17 or less words long so we truncated the longer tweets and padded the shorter ones.
 
 ### Embedding matrix
-
+The embedding matrix is created from the GloVe dataset. It represents the information carried by word vectors in a different data structure, which can be incorporated into the model.
 
 
    
@@ -76,6 +76,10 @@ The result were quite poor, but the task for the II. Milestone was to prepare ev
 ![Final confusion matrix](final.png)
 
 ## Conclusion
-BERT might have been better...
+Predicting the real meaning of disastrous tweets is not an easy task. Beyond the literal meaning of words, the model must detect humor, sarcasm, personification, figurative speech, and other verbal tools commonly used by humans. The short format of tweets makes this task even more challenging.
+
+To process the tweets, we used the GloVe word-vectorization tool and a complex convolutional network that integrates LSTM and GRU layers in parallel.
+
+Despite our efforts to optimize hyperparameters and employ the advanced model described above, the accuracy of the model reached only 0.8132. While this might not seem high at first glance, considering the challenges outlined, I believe it is a respectable achievement.
 
 ## About AI usage
