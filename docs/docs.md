@@ -1,4 +1,4 @@
-# LuaLuaLua report
+# LuaLuaLua report (Megajánlott jegyért)
  
 ## Task Description
 This project is our solution for the [Natural Language Processing with Disaster Tweets](https://kaggle.com/competitions/nlp-getting-started) competition on Kaggle.
@@ -28,49 +28,57 @@ To use GloVe we needed to encode our text input into word-vectors, but first the
    *Distribution of words in training data*  
 
    The abundance of `[link]` is likely due to the large number of tweets that included images or other shared content. Since links don't convey much meaning, we decided to remove them entirely from the dataset.  
-   Actually, after completing the model, we were courious about the fact that how the cleaning affects the output of the model, since despite the fact, that these words do not carry information, the connection between the words might be useful. So we just simply removed the cleaning commands form the code. Here is the comparsion of the confusion matrix between the models with and without the text cleaning:
+   After completing the model, we became curious about how removing the stopwords affects the output of the model, while these words do not carry information directly, however the connection between the words might be useful. So we just simply removed the cleaning commands form the code. Here is the comparsion of the confusion matrix between the models with and without the cleaning:
    
    ![Without the cleaning](withoutCleaning.png)
    
-   As it can be seen, cleaning does not affect the out very much, but its got a slightly better performance, so we just kept the orginal form.
+   *Confusion matrix without removing the stopwords*
+   
+   It can be seen, that the cleaning does not have a significant impact on the result. Given it  has got a slightly better performance, we just kept the original form.
+
+
 3. **Addressing Retweets and Usernames**:  
    After removing links, we noticed a significant number of meaningless words remaining in our dataset. Among the most common was `RT`, which we soon realized indicates retweets. Additionally, many other frequent "words" appeared to be fragments of usernames from retweet headers (e.g., `@user1234`). These usernames commonly don't carry much important information, so we removed them together with the retweet headers.
 
 4. **Tokenizing the tweets**:
-   After cleaning we tokenized each tweet into a list of words. We plotted the distribution of tweet lengths.
+   After cleaning, we tokenized each tweet into a list of words. We plotted the distribution of tweet lengths.
    
    ![image](https://github.com/user-attachments/assets/47921616-bd9e-44d6-93d7-578cc8bb5c63)
    
    *Distribution of number of tokens per cleaned tweet*
-   
-   We needed all inputs for our model to be the same in length. 99% of the words tweets is 17 or less words long so we truncated the longer tweets and padded the shorter ones.
+   All inputs for our model needed to be the same length. Since 99% of the tweets contain 17 or fewer words, the longer tweets were truncated, and the shorter ones were padded.
 
 ### Embedding matrix
 The embedding matrix is created from the GloVe dataset. It represents the information carried by word vectors in a different data structure, which can be incorporated into the model.
 
+<div style="page-break-after: always"></div>
 
-   
 ## Evolution of the Model
-Basic architecture
+### The basic model
+The input layer is an embedding layer that incorporates the GloVe embedding matrix. Following this, the core processing layers include a GlobalMaxPooling1D layer, which reduces the dimensionality by selecting the maximum value across each feature dimension. The output layer employs a sigmoid activation function, making it well-suited for binary classification tasks. The output is a number between 0 and 1. Values above 0.5 are interpreted as "disaster" and those below as "non-disaster".
+
 
 ### 1. LSTM 
-**Model:** The first model (whitch we created to the II. Milestone) used LSTM (Long Short-Term Memory) architecture, but it was just kind of a dummy.
+**Model:**
+The initial model for the second milestone used an LSTM (Long Short-Term Memory) layer as a preliminary implementation. It served as a placeholder for developing the notebook's foundational components.
 
-**Evalutaion:**
-The result were quite poor, but the task for the II. Milestone was to prepare everything in our notebook except the model, so it did the job. The confusion matrix looked like this:
+**Evaluation:**
+While performance was limited, the model met the milestone's requirements. The confusion matrix is as follows:
 
 ![First model](firstMod.png)
 
 
 ### 2. Improved LSTM
-**Model:** The second model has been the most successful so far. This model uses an embedding layer with GloVe preloaded. Bidirectional LSTM cells are employed to capture context in the tweets, and a 50% dropout layer is applied to reduce overfitting. The output is a number between 0 and 1, where values above 0.5 are interpreted as "disaster" and those below as "non-disaster."
+**Model:** 
+The second model has been the most successful so far. This model uses  bidirectional LSTM cells to capture context in the tweets. A 50% dropout layer is applied to reduce overfitting.
 
-To further mitigate overfitting, the model incorporates techniques such as EarlyStopping, ModelCheckpoint, and ReduceLROnPlateau. Hyperparameter optimization is also implemented: the parameters learned from the first model fitting are used to improve the performance of the second model.
+To further reduce overfitting, the model incorporates techniques such as EarlyStopping, and ReduceLROnPlateau. 
+
+Hyperparameter optimization using keras-tuner was employed to enhance the model. 
 
 **Evalutaion:**
 
-The accuracy gets quite acceptable value:
-
+The model achieves a quite acceptable accuracy.
 ![Improved LSTM accuracy](improved_lstm_accuracy.png)
 
 The confusion matrix:
@@ -79,25 +87,35 @@ The confusion matrix:
 
 
 ### 3. Stacked Model: GRU-LSTM
-**Model:** The final model uses an embedding layer with GloVe loaded. Then it uses two parallel layers, a Bidirectional LSTM for capturing context in the tweets and a GRU to capture different patterns and improve generalization. Then it uses a Dense layer for classification, a 50% droput layer to reduce overfitting, and finally an output Dense layer for binary classification. To eliminate overfitting we use: early stopping, checkpointing, and learning rate reduction.
+**Model:** The final model employs a parallel architecture with a bidirectional LSTM and a GRU (Gated Recurrent Unit) layer to capture patterns in the data and enhance generalization. These layers are followed by a Dense layer for feature extraction and a 50% Dropout layer to mitigate overfitting. The model concludes with an output Dense layer utilizing a sigmoid activation function for binary classification, as used before. 
 
-![Model diagram](modell_picture.png)
+The model is further imrpoved by a **2 phase training** method.
+In the first phase the training of the embdeding layer is disabled, while in the second phase it is enabled.
+
+![Model diagram](model_diagram.png)
+
+*Block diagram of the model architecture*
+
+Hyperparameter optimization was performed as before, which is not included in the final notebook, as it makes the training unreasonably long, leading to problems with Google Colab usage limits. However the results from the optimization are reflected in the model. The code for the hyperparameter optimization can be seen on the `gru-lstm-hyperopti` branch on GitHub.
 
 **Evalutaion:**
-
+The final confusion matrix can be seen below:
 ![Final confusion matrix](final.png)
 
+The result is unexpectedly somewhat worse than the 2nd model. However we were able to run the training longer without overfitting. Given the path and the fact that this model better resembles our work it was chosen as the final one.
+
 ![Model training and validation accuracy](training_validation_accuracy.png)
+
+
 
 ## Conclusion
 Predicting the real meaning of disastrous tweets is not an easy task. Beyond the literal meaning of words, the model must detect humor, sarcasm, personification, figurative speech, and other verbal tools commonly used by humans. The short format of tweets makes this task even more challenging.
 
-To process the tweets, we used the GloVe word-vectorization tool and a complex convolutional network that integrates LSTM and GRU layers in parallel.
-
-Despite our efforts to optimize hyperparameters and employ the advanced model described above, the accuracy of the model reached only 0.8132 (while the second version reached 0.8344). While this might not seem high at first glance, considering the challenges outlined, I believe it is a respectable achievement.
+Despite our efforts to optimize hyperparameters and employ the advanced model described above, the accuracy of the model reached only 81.32% (the second version reached 83.44%). 
+To process the tweets, we used the GloVe word-vectorization tool and a complex convolutional network that integrates LSTM and GRU layers in parallel. We are aware that the problem has solutions with close to 99% accuracy from the Kaggle competition. It is suspected that those solutions could rely on the BERT or other transformer models. However, these models are more computationally intensive and complex to train, it was determined that they would not align with our chosen approach.
 
 ## About AI usage
 We used LLMs primarily in three areas:
-Inspiration: We asked ChatGPT for high-level approaches and potential solution paths to specific problems. Of cours, after that we made our own research about the suggested solutions.
-Formatting: We used LLM-s for code formatting and documentation phrasing, to make code, comments and documentation more undersandable.
-Research: We also used LLM-s for understanding a given principle (e.g., LSTM), or to specify a method to our given problem.
+1. LLMs were used to provide high-level suggestions and solution strategies for specific challenges. These served as a foundation for deeper research and refinement tailored to our needs.
+2. Formatting: LLMs were used in improving code structure, formatting, and documentation, ensuring clarity and professionalism in both implementation and explanation.
+3. Research: LLMs were used to clarify technical concepts (e.g., LSTM) and to explore methods applicable to our specific problem, enabling more informed decision-making.
