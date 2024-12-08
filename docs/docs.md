@@ -22,7 +22,7 @@ To use GloVe we needed to encode our text input into word-vectors, but first the
 
    The abundance of `[link]` is likely due to the large number of tweets that included images or other shared content. Since links don't convey much meaning, we decided to remove them entirely from the dataset.  
    Actually, after completing the model, we were courious about the fact that how the cleaning affects the output of the model, since despite the fact, that these words do not carry information, the connection between the words might be useful. So we just simply removed the cleaning commands form the code. Here is the comparsion of the confusion matrix between the models with and without the text cleaning:
-   ![Without the cleaning](../../withoutCleaning.png)
+   ![Without the cleaning](withoutCleaning.png)
    
    As it can be seen, cleaning does not affect the out very much, but its got a slightly better performance, so we just kept the orginal form.
 2. **Addressing Retweets and Usernames**:  
@@ -49,7 +49,7 @@ Basic architecture
 **Model:** The first model (whitch we created to the II. Milestone) used LSTM (Long Short-Term Memory) architecture, but it was just kind of a dummy.
 **Evalutaion:**
 The result were quite poor, but the task for the II. Milestone was to prepare everything in our notebook except the model, so it did the job. The confusion matrix looked like this:
-![First model](../../firstMod.png)
+![First model](firstMod.png)
 
 
 ### 2. Improved LSTM
@@ -63,7 +63,7 @@ The result were quite poor, but the task for the II. Milestone was to prepare ev
 ### 4. Stacked Model: GRU-LSTM
 **Model:**
 **Evalutaion:**
-![Final confusion matrix](../../final.png)
+![Final confusion matrix](final.png)
 
 ## Conclusion
 BERT might have been better...
